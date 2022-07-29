@@ -3,18 +3,23 @@ from io import open
 print("Cordial saludo empleado")
 
 document = input("Digite su numero de identificacion \n")
-save = open("Guardado.txt", "w")
-save.write("Numero de Documento")
-save.write(document)
-save.close()
+
 
 if document.isdigit() == True and len(document) == 10:
+    save = open("Guardado.txt", "w")
+    save.write("Numero de Documento")
+    save.write(document)
+    save.close()
     print("Se ha registrado correctamente el Numero de Documento \n")
 else:
     while document.isdigit() != True or len(document) < 10 or len(document) > 10:
         print("Ha digitado incorrectamente el Numero de Documento, Repita el  proceso \n (Recuerde que el numero de documento debe contener 10 digitos numericos sin puntos ni comas)\n")
         document = input("Digite su numero de identificacion \n")
         if document.isdigit() == True and len(document) == 10:
+            save = open("Guardado.txt", "w")
+            save.write("Numero de Documento")
+            save.write(document)
+            save.close()
             print("Se ha registrado correctamente el Numero de Documento \n")
 
 
@@ -72,13 +77,29 @@ else:
 
 
 wage = str(input("Digite su salario base \n"))
-save5 = open("Guardado.txt", "w")
-save5.write("Salario Base")
-save5.write(wage)
-save5.close()
 
 vef3 = re.findall('^\d[0-9]{6,8}',wage)
+
+start = wage.startswith("0")
+
+if start == True:
+    while start == True:
+        print("Ha digitado de manera incorrecta el salario base (puede digitar 7 u 8 digitos, sin puntos ni comas.)\n")
+        wage  = str(input("Digite su salario base \n"))
+        vef3 = re.findall('^\d[0-9]{6,8}',wage)
+        start = wage.startswith("0")
+        if vef3 and start == False:
+            save5 = open("Guardado.txt", "w")
+            save5.write("Salario Base")
+            save5.write(wage)
+            save5.close()
+            print("Se ha registrado correctamente su salario \n")
+
 if vef3:
+    save5 = open("Guardado.txt", "w")
+    save5.write("Salario Base")
+    save5.write(wage)
+    save5.close()
     print("Se ha registrado correctamente su salario \n")
 else:
     while not vef3:
@@ -86,6 +107,10 @@ else:
         wage  = str(input("Digite su salario base \n"))
         vef3 = re.findall('^\d[0-9]{6,8}',wage)
         if vef3:
+            save5 = open("Guardado.txt", "w")
+            save5.write("Salario Base")
+            save5.write(wage)
+            save5.close()
             print("Se ha registrado correctamente su salario \n")
 
 workedDays = int(input("Digite el numero de dias laborados\n"))
@@ -131,13 +156,14 @@ transporte = int(transporte/30)*workedDays
 Nomina = int(Nomina+transporte)
 
 
-YN = input("Sus datos son " + Name + document + " Confirme escribiendo un YES de lo contrario escriba NO \n")
+YN = input("Sus datos son " + Name + lName + document + "Confirme escribiendo un YES de lo contrario escriba NO \n")
 
 if (YN == "YES"):
     print("Su descuento por pension es:", pension)
     print("Su descuento por salud es:", salud)
     print("Su subsidio por transorte es de",transporte)
     print("Su salario neto por trabajar", workedDays, "dias, es de ", Nomina)
-while (YN !="YES"):
-    YN = input("Sus datos son " + Name + lName + document + "Confirme escribiendo un YES de lo contrario escriba NO \n")
+else:
+    while (YN !="YES"):
+        YN = input("Sus datos son " + Name + lName + document + "Confirme escribiendo un YES de lo contrario escriba NO \n")
 
