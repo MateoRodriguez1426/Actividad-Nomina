@@ -1,6 +1,33 @@
-import re
+
 from io import open
-print("Cordial saludo empleado")
+
+import re
+
+print("Cordial saludo empleado a empresa S.A.S")
+
+typedoc = input("Digite su tipo de identificacion de entre: C.C  T.I o T.E \n")
+
+typedocvef = re.findall(r'.[a-zA-Z]{2,3}', typedoc)
+if typedocvef:
+    if typedoc == "C.C" or typedoc == "c.c" or typedoc == "CC" or typedoc == "cc":
+        print("Ha seleccionado cedula de ciudadania \n")
+    if typedoc == "T.I" or typedoc == "t.i" or typedoc == "TI" or typedoc == "ti":
+        print("Ha seleccionado Tarjeta de Identidad \n")
+    if typedoc == "T.E" or typedoc == "t.e" or typedoc == "TE" or typedoc == "te":
+        print("Ha seleccionado Tarjeta de Extranjeria \n")
+else:
+    while not typedocvef:
+        print("Ha digitado de manera incorrecta el tipo de numero de identificacion \n")
+        typedoc = input("Digite su tipo de identificacion de entre: C.C  T.I o T.E \n")
+        typedocvef = re.findall(r'.[a-zA-Z]{2,3}', typedoc)
+        if typedocvef:
+            if typedoc == "C.C" or typedoc == "c.c" or typedoc == "CC" or typedoc == "cc":
+                print("Ha seleccionado cedula de ciudadania \n")
+            if typedoc == "T.I" or typedoc == "t.i" or typedoc == "TI" or typedoc == "ti":
+                print("Ha seleccionado Tarjeta de Identidad \n")
+            if typedoc == "T.E" or typedoc == "t.e" or typedoc == "TE" or typedoc == "te":
+                print("Ha seleccionado Tarjeta de Extranjeria \n")
+
 
 document = input("Digite su numero de identificacion \n")
 
@@ -156,7 +183,7 @@ transporte = int(transporte/30)*workedDays
 Nomina = int(Nomina+transporte)
 
 
-YN = input("Sus datos son " + Name + lName + document + "Confirme escribiendo un YES de lo contrario escriba NO \n")
+YN = input("Sus datos son " + Name, " " + lName, " " + document, " " + "Confirme escribiendo un YES de lo contrario escriba NO \n")
 
 if (YN == "YES"):
     print("Su descuento por pension es:", pension)
@@ -165,5 +192,5 @@ if (YN == "YES"):
     print("Su salario neto por trabajar", workedDays, "dias, es de ", Nomina)
 else:
     while (YN !="YES"):
-        YN = input("Sus datos son " + Name + lName + document + "Confirme escribiendo un YES de lo contrario escriba NO \n")
+        YN = input("Sus datos son " + Name, " " + lName, " " + document, " " + "Confirme escribiendo un YES de lo contrario escriba NO \n")
 
