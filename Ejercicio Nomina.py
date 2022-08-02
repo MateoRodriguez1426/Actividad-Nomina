@@ -1,33 +1,8 @@
-
 from io import open
 
 import re
 
 print("Cordial saludo empleado a empresa S.A.S")
-
-typedoc = input("Digite su tipo de identificacion de entre: C.C  T.I o T.E \n")
-
-typedocvef = re.findall(r'.[a-zA-Z]{2,3}', typedoc)
-if typedocvef:
-    if typedoc == "C.C" or typedoc == "c.c" or typedoc == "CC" or typedoc == "cc":
-        print("Ha seleccionado cedula de ciudadania \n")
-    if typedoc == "T.I" or typedoc == "t.i" or typedoc == "TI" or typedoc == "ti":
-        print("Ha seleccionado Tarjeta de Identidad \n")
-    if typedoc == "T.E" or typedoc == "t.e" or typedoc == "TE" or typedoc == "te":
-        print("Ha seleccionado Tarjeta de Extranjeria \n")
-else:
-    while not typedocvef:
-        print("Ha digitado de manera incorrecta el tipo de numero de identificacion \n")
-        typedoc = input("Digite su tipo de identificacion de entre: C.C  T.I o T.E \n")
-        typedocvef = re.findall(r'.[a-zA-Z]{2,3}', typedoc)
-        if typedocvef:
-            if typedoc == "C.C" or typedoc == "c.c" or typedoc == "CC" or typedoc == "cc":
-                print("Ha seleccionado cedula de ciudadania \n")
-            if typedoc == "T.I" or typedoc == "t.i" or typedoc == "TI" or typedoc == "ti":
-                print("Ha seleccionado Tarjeta de Identidad \n")
-            if typedoc == "T.E" or typedoc == "t.e" or typedoc == "TE" or typedoc == "te":
-                print("Ha seleccionado Tarjeta de Extranjeria \n")
-
 
 document = input("Digite su numero de identificacion \n")
 
@@ -35,8 +10,8 @@ document = input("Digite su numero de identificacion \n")
 if document.isdigit() == True and len(document) == 10:
     save = open("Guardado.txt", "w")
     save.write("Numero de Documento")
+    save.write("_________")
     save.write(document)
-    save.close()
     print("Se ha registrado correctamente el Numero de Documento \n")
 else:
     while document.isdigit() != True or len(document) < 10 or len(document) > 10:
@@ -44,17 +19,17 @@ else:
         document = input("Digite su numero de identificacion \n")
         if document.isdigit() == True and len(document) == 10:
             save = open("Guardado.txt", "w")
-            save.write("Numero de Documento")
+            save.write("Numero de Documento \n")
+            save.write("_________")
             save.write(document)
-            save.close()
             print("Se ha registrado correctamente el Numero de Documento \n")
 
 
 Name = str(input("Digite su primer nombre \n"))
 save2 = open("Guardado.txt", "w")
 save2.write("Primer Nombre")
+save2.write("_____")
 save2.write(Name)
-save2.close()
 vef = re.findall(r'[a-zA-Z]{2,20}', Name)
 if vef:
     print("Se ha registrado correctamente su nombre \n")
@@ -65,13 +40,16 @@ else:
         vef = re.findall(r'[a-zA-Z]{2,20}', Name)
         if vef:
             print("Se ha registrado correctamente su nombre \n")
+            save2 = open("Guardado.txt", "w")
+            save2.write("Primer Nombre")
+            save2.write("_____")
+            save2.write(Name)
 
 sName = str(input("Digite su segundo nombre (Si no tiene digite NA)\n"))
 save3 = open("Guardado.txt", "w")
 save3.write("Segundo Nombre")
+save3.write("_____")
 save3.write(sName)
-save3.close()
-
 vef1 = re.findall(r'[a-zA-Z]{2,20}', sName)
 
 if vef1:
@@ -88,9 +66,8 @@ else:
 lName = str(input("Digite sus Apellidos completos \n"))
 save4 = open("Guardado.txt", "w")
 save4.write("Apellidos Completos")
+save4.write("_____")
 save4.write(lName)
-save4.close()
-
 vef2 = re.findall(r'[a-zA-Z]{2,40}\s', lName)
 if vef2:
     print("Se han registrado correctamente sus apellidos \n")
@@ -101,6 +78,10 @@ else:
         vef2 = re.findall(r'[a-zA-Z]{2,40}\s', lName)
         if vef2:
             print("Se han registrado correctamente sus apellidos\n")
+            save4 = open("Guardado.txt", "w")
+            save4.write("Apellidos Completos")
+            save4.write("_____")
+            save4.write(lName)
 
 
 wage = str(input("Digite su salario base \n"))
@@ -118,15 +99,15 @@ if start == True:
         if vef3 and start == False:
             save5 = open("Guardado.txt", "w")
             save5.write("Salario Base")
+            save5.write("_____")
             save5.write(wage)
-            save5.close()
             print("Se ha registrado correctamente su salario \n")
 
 if vef3:
     save5 = open("Guardado.txt", "w")
     save5.write("Salario Base")
+    save5.write("_____")
     save5.write(wage)
-    save5.close()
     print("Se ha registrado correctamente su salario \n")
 else:
     while not vef3:
@@ -136,17 +117,16 @@ else:
         if vef3:
             save5 = open("Guardado.txt", "w")
             save5.write("Salario Base")
+            save5.write("_____")
             save5.write(wage)
-            save5.close()
             print("Se ha registrado correctamente su salario \n")
 
 workedDays = int(input("Digite el numero de dias laborados\n"))
 workedDaysT = str(workedDays)
 save6 = open("Guardado.txt", "w")
 save6.write("Dias Trabajados")
+save6.write("_____")
 save6.write(workedDaysT)
-save6.close()
-
 if workedDays >= 10 or workedDays <= 31:
     workedDaysT = str(workedDays)
     vef4 = re.findall('^\d[0-9]{2}', workedDaysT)
@@ -160,12 +140,16 @@ if workedDays >= 10 or workedDays <= 31:
             vef4 = re.findall('\d[0-9]{2}', workedDaysT)
             if vef4:
                 print("Se han registrado correctamente sus Dias Trabajados\n")
+                save6 = open("Guardado.txt", "w")
+                save6.write("Dias Trabajados")
+                save6.write("_____")
+                save6.write(workedDaysT)
 
 else:
     workedDaysT = str(workedDays)
     while workedDaysT.isdigit() == False:
         print("Debe registrar un numero entre 10 a 31, de lo contrario sera tomado como invalido\n")
-        workedDays = int(input("Digite el numero de dias laborados\n"))
+        workedDays = input("Digite el numero de dias laborados\n")
         workedDaysT = str(workedDays)
         vef4 = re.findall('^\d[0-9]{2}', workedDaysT)
         if vef4:
@@ -183,7 +167,7 @@ transporte = int(transporte/30)*workedDays
 Nomina = int(Nomina+transporte)
 
 
-YN = input("Sus datos son " + Name, " " + lName, " " + document, " " + "Confirme escribiendo un YES de lo contrario escriba NO \n")
+YN = str(input("Sus datos son. Nombre: " + Name + " Apellido: " + lName + " Numero de Documento: " + document + " Salario: " + wage + "\n Confirme escribiendo un YES de lo contrario escriba NO \n"))
 
 if (YN == "YES"):
     print("Su descuento por pension es:", pension)
@@ -192,5 +176,10 @@ if (YN == "YES"):
     print("Su salario neto por trabajar", workedDays, "dias, es de ", Nomina)
 else:
     while (YN !="YES"):
-        YN = input("Sus datos son " + Name, " " + lName, " " + document, " " + "Confirme escribiendo un YES de lo contrario escriba NO \n")
+        YN = str(input("Sus datos son. Nombre: " + Name + " Apellido: " + lName + " Numero de Documento: " + document + " Salario: " + wage + "\n Confirme escribiendo un YES de lo contrario escriba NO \n"))
+        if (YN == "YES"):
+            print("Su descuento por pension es:", pension)
+            print("Su descuento por salud es:", salud)
+            print("Su subsidio por transorte es de",transporte)
+            print("Su salario neto por trabajar", workedDays, "dias, es de ", Nomina)
 
