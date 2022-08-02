@@ -174,6 +174,10 @@ if (YN == "YES"):
     print("Su descuento por salud es:", salud)
     print("Su subsidio por transorte es de",transporte)
     print("Su salario neto por trabajar", workedDays, "dias, es de ", Nomina)
+    keep_data = open("Guardado.txt", "w")
+    total_data = str(f"Sus datos son. Nombre: {Name}"  "Apellido: {lName}, con Numero de Documento: {document} y el Salario neto de: {Nomina}" )
+    keep_data.write(total_data)
+    keep_data.close()
 else:
     while (YN !="YES"):
         YN = str(input("Sus datos son. Nombre: " + Name + " Apellido: " + lName + " Numero de Documento: " + document + " Salario: " + wage + "\n Confirme escribiendo un YES de lo contrario escriba NO \n"))
@@ -182,4 +186,9 @@ else:
             print("Su descuento por salud es:", salud)
             print("Su subsidio por transorte es de",transporte)
             print("Su salario neto por trabajar", workedDays, "dias, es de ", Nomina)
+            keep_data = open("Guardado.txt", "w")
+            total_data = str(f"Sus datos son. Nombre: {Name}" "Apellido: {lName}, con Numero de Documento: {document} y el Salario neto de: {Nomina}")
+            keep_data.write(total_data)
+            keep_data.close()
+
 
